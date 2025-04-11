@@ -18,7 +18,7 @@ var pause : bool
 var oneeye = preload("res://scenes/oneeye.tscn")
 var bat = preload("res://scenes/bat.tscn")
 var monsters_generated : Array
-var bat_h := [165, 209]
+var bat_h := [175, 224]
 var monster
 
 @onready var player = $Player
@@ -85,15 +85,15 @@ func monster_generator():
 		for i in range(randi() % int(round(speed)) + 1):
 			monster = oneeye.instantiate()
 			var monster_scale = monster.get_node("Animation").scale
-			var monster_x = screen_size.x + round(score) + 150 + (i * 25)
+			var monster_x = screen_size.x + round(score) + 190 + (i * 25)
 			var monster_y = 228
 			add_monster(monster, monster_x, monster_y)
 		
 		#bat
 		if speed >= 2:
-			if randi_range(0, 1) == 1:
+			if randi_range(0, 4) == 1:
 				monster = bat.instantiate()
-				var monster_x = screen_size.x + round(score) + 150 
+				var monster_x = screen_size.x + round(score) + 190 
 				var monster_y = bat_h[randi() % bat_h.size()]
 				add_monster(monster, monster_x, monster_y)
 

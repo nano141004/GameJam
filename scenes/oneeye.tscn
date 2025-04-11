@@ -581,7 +581,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_p4dt7")
 animation = &"fly"
 autoplay = "fly"
-frame_progress = 0.254594
+frame_progress = 0.604755
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
