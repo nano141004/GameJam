@@ -7,6 +7,7 @@ extends CharacterBody2D
 var can_double_jump = false
 
 @onready var animplayer = $Animation
+@onready var jump_sfx = $Jump
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,10 +30,12 @@ func _physics_process(delta: float):
 		if can_double_jump and Input.is_action_just_pressed("jump"):
 			velocity.y = jump_speed
 			can_double_jump = false
+			jump_sfx.play()
 		# First Jump
 		if is_on_floor() and Input.is_action_just_pressed("jump"):
 			velocity.y = jump_speed
 			can_double_jump = true
+			jump_sfx.play()
 		#if is_on_floor():
 			#if Input.is_action_just_pressed('jump'):
 				#velocity.y = jump_speed

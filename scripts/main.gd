@@ -90,7 +90,7 @@ func monster_generator():
 			add_monster(monster, monster_x, monster_y)
 		
 		#bat
-		if round(speed) == 1:
+		if speed >= 2:
 			if randi_range(0, 1) == 1:
 				monster = bat.instantiate()
 				var monster_x = screen_size.x + round(score) + 150 

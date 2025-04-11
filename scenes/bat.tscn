@@ -71,7 +71,7 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gffuy")
 animation = &"fly"
 autoplay = "fly"
-frame_progress = 0.471375
+frame_progress = 0.124421
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 2)
