@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://cx06vwo7v22o2"]
+
+[ext_resource type="Texture2D" uid="uid://bamthxt0p0rik" path="res://assets/Bat/fly.png" id="1_fpcwx"]
+[ext_resource type="Script" path="res://scripts/bat.gd" id="1_h80ec"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buxia"]
+atlas = ExtResource("1_fpcwx")
+region = Rect2(0, 0, 44, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he1ao"]
+atlas = ExtResource("1_fpcwx")
+region = Rect2(44, 0, 44, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4rvy"]
+atlas = ExtResource("1_fpcwx")
+region = Rect2(88, 0, 44, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmt0s"]
+atlas = ExtResource("1_fpcwx")
+region = Rect2(132, 0, 44, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl3ar"]
+atlas = ExtResource("1_fpcwx")
+region = Rect2(176, 0, 44, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb3yp"]
+atlas = ExtResource("1_fpcwx")
+region = Rect2(220, 0, 44, 92)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu4no"]
+atlas = ExtResource("1_fpcwx")
+region = Rect2(264, 0, 44, 92)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gffuy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buxia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he1ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4rvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmt0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl3ar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mb3yp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu4no")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 13.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajlul"]
+radius = 6.0
+
+[node name="Bat" type="Area2D"]
+script = ExtResource("1_h80ec")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_gffuy")
+animation = &"fly"
+autoplay = "fly"
+frame_progress = 0.471375
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 2)
+shape = SubResource("CircleShape2D_ajlul")

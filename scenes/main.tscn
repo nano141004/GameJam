@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlm30f1gqhq8c"]
+
+[ext_resource type="PackedScene" uid="uid://dkacf1a3pflg5" path="res://scenes/background.tscn" id="1_3udto"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_vlb1w"]
+[ext_resource type="PackedScene" uid="uid://cjv45owm606kh" path="res://scenes/platform.tscn" id="2_kqlva"]
+[ext_resource type="PackedScene" uid="uid://dvntxr00slb8x" path="res://scenes/player.tscn" id="3_rmw6d"]
+[ext_resource type="PackedScene" uid="uid://c1l4v4iqjgwn4" path="res://scenes/hud.tscn" id="6_m2jx6"]
+[ext_resource type="PackedScene" uid="uid://bg5xn380bhbg3" path="res://scenes/death.tscn" id="8_ec350"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_vlb1w")
+
+[node name="Background" parent="." instance=ExtResource("1_3udto")]
+
+[node name="Platform" parent="." instance=ExtResource("2_kqlva")]
+position = Vector2(87, 272)
+
+[node name="Player" parent="." instance=ExtResource("3_rmw6d")]
+position = Vector2(30, 225)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(-1.90735e-06, -1.52588e-05)
+anchor_mode = 0
+
+[node name="HUD" parent="." instance=ExtResource("6_m2jx6")]
+
+[node name="Death" parent="." instance=ExtResource("8_ec350")]

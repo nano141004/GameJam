@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjv45owm606kh"]
+
+[ext_resource type="PackedScene" uid="uid://ckfpttn7hs08b" path="res://scenes/sprite_platform.tscn" id="1_2520f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5fwu"]
+size = Vector2(1629.5, 34)
+
+[node name="Platform" type="StaticBody2D"]
+
+[node name="Sprite2D5" parent="." instance=ExtResource("1_2520f")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(733, -8)
+shape = SubResource("RectangleShape2D_b5fwu")
