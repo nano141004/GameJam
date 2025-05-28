@@ -17,9 +17,15 @@ var pause : bool
 
 var oneeye = preload("res://scenes/oneeye.tscn")
 var bat = preload("res://scenes/bat.tscn")
+var platform_scene = preload("res://scenes/platform.tscn")
 var monsters_generated : Array
+var platforms_generated : Array
 var bat_h := [175, 224]
 var monster
+
+# platform spawner
+@export var platform_spawn_distance = 600     
+var last_platform_x = 0
 
 @onready var player = $Player
 @onready var camera = $Camera
@@ -78,6 +84,22 @@ func player_hit(body):
 func high_score_make():
 	if score > high_score:
 		high_score = score
+
+func platform_spawner():
+	#
+	var spawn_position = last_platform_x + platform_spawn_distance
+	if camera.position.x + screen_size.x > spawn_position:
+		var new_platform = platform_scene.instantiate()
+		new_platform.position = Vector2i(spawn_position, 272)
+		add_child(new_platform)
+		platforms_generated.append(new_platform)
+		last_platform_x = spawn_position
+		
+	# Remove platform after 
+	for p in platforms_generated:
+		if p.position.x < (camera.position.x - screen_size.x):
+			p.queue_free()
+			platforms_generated.erase(p)
 	
 func monster_generator():
 	if monsters_generated.is_empty() or monster.position.x < score + randi_range(300, 500):
@@ -104,8 +126,10 @@ func _process(delta: float) -> void:
 			pause = false
 			pause_menu.hide()
 			$HUD.get_node("HighScore").hide()
-	
-	else: 
+
+# Physics process 
+func _physics_process(delta: float) -> void:
+	if not pause:
 		#update speed
 		if speed < max_speed:
 			speed = start_speed + score/accel
@@ -115,6 +139,9 @@ func _process(delta: float) -> void:
 		#generate monsters
 		monster_generator()
 		
+		#spawn platform
+		platform_spawner()
+		
 		#moving
 		player.position.x += speed
 		camera.position.x += speed
@@ -122,10 +149,6 @@ func _process(delta: float) -> void:
 		#score
 		score += speed
 		update_score()
-		
-		#regenerate platform
-		if camera.position.x - platform.position.x > screen_size.x * 1:
-			platform.position.x += screen_size.x
 			
 		for monster in monsters_generated:
 			if monster.position.x < (camera.position.x - screen_size.x):

@@ -4,6 +4,7 @@
 
 [node name="Death" type="CanvasLayer"]
 process_mode = 2
+metadata/_edit_vertical_guides_ = [-69.0]
 
 [node name="DeathLabel" type="Label" parent="."]
 modulate = Color(1, 0.00784314, 0, 1)
